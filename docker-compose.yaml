@@ -3,7 +3,7 @@ services:
     container_name: 'ollama_backend'
     restart: unless-stopped
     build:
-      context: /Users/user/Documents/Code/ollama_docker
+      context: ./
       dockerfile: ollama_backend.Dockerfile
     # network_mode: none
     # ports:
