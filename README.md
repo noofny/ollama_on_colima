@@ -124,6 +124,7 @@ Prompt: `write me a story about egg`
 
 ### Results
 
+```text
                        Ollama on macOS           Ollama on Colima
                        (100% GPU-bound)          (100% CPU-bound)
 --------------------------------------------------------------------
@@ -132,6 +133,7 @@ Deekseek-R1 8b              ~18.8 token/s            ~18.6 token/s
 Deekseek-R1 14b             ~11.9 token/s            ~11.5 token/s
 Deekseek-R1 32b              ~6.1 token/s             ~5.9 token/s
 --------------------------------------------------------------------
+```
 
 ### Conclusion
 
