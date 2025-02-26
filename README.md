@@ -93,6 +93,19 @@ ollama run deepseek-r1:1.5b
 ... 
 ```
 
+## Stop/Start
+
+```shell
+cd <where you cloned this repo>
+...
+docker compose stop
+colima stop
+...
+colima start --cpu 8 --memory 32
+docker compose start
+... 
+```
+
 ## Teardown
 
 NOTE: You will lose all your history, containers, downloaded models and everything.
