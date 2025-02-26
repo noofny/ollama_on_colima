@@ -111,16 +111,16 @@ colima delete
 
 ### Machine Spec
 
-Model: MacMini M4-Pro (2024)
-14 CPU cores, 20 GPU cores, 16 NE cores
-RAM: 64GB
-macOS: 15.3.1
+- Model: MacMini M4-Pro (2024)
+- 14 CPU cores, 20 GPU cores, 16 NE cores
+- RAM: 64GB
+- macOS: 15.3.1
 
 ### Configuration
 
-Colima Container: 8 cores, 32GB RAM, 100GB storage
-Models: Official [deepseek-r1](https://ollama.com/library/deepseek-r1) models.
-Prompt: `write me a story about egg`
+- Colima Container: 8 cores, 32GB RAM, 100GB storage
+- Models: Official [deepseek-r1](https://ollama.com/library/deepseek-r1) models.
+- Prompt: `write me a story about egg`
 
 ### Results
 
