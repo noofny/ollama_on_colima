@@ -11,4 +11,4 @@ services:
     environment:
       OLLAMA_MODELS: /root/ollama_models
     volumes:
-      - /Volumes/colima_mounts/ollama_models:/root/ollama_models
+      - /Volumes/macData4TB/colima_mounts/ollama_models:/root/ollama_models
