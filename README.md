@@ -122,15 +122,15 @@ colima delete
 
 ## Storing Models Externally
 
-Models are large, so follow these steps if you wish to store these on an external volume or NAS location, so you don't have to download them via the container build every time.
+Models are large, so follow these steps if you wish to store these on an external volume or NAS location, so you don't have to download them via the container every time you rebuild.
 
-1. Copy any downloaded models from the existing running container to your desired volume/folder...
+1. [optional] If you already have downloaded models in an existing container instance, copy these to your desired location now before you teardown...
 
 ```shell
-docker cp ollama_backend:/root/.ollama/models /Volumes/colima_mounts/models
+docker cp ollama_backend:/root/.ollama/models /Volumes/colima_mounts
 ```
 
-2. Kill the running container and remove the image, it will have to be rebuilt.
+2. Teardown the running container+image, it will have to be rebuilt later...
 
 ```shell
 docker compose down
@@ -168,7 +168,7 @@ colima restart
 docker compose up -d
 ```
 
-5. Exec to the running container and confirm the mount is working (you should see somefolders for 'blobs' & 'manifests' inside)...
+5. Exec to the running container and confirm the mount is working (you should see 'blobs' & 'manifests' folders within)...
 
 ```shell
 docker exec -it ollama_backend /bin/bash
@@ -177,7 +177,7 @@ root@1234567890:/# ls /root/ollama_models/
 blobs  manifests
 ```
 
-6. Confirm Ollama recognises the models present on the mounted path and can run them without needing to download from remote repository...
+6. Confirm Ollama recognises these models present & can run them without needing to download them from the remote repository...
 
 ```shell
 root@1234567890:/# ollama list
