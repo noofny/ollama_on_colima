@@ -8,3 +8,7 @@ services:
     # network_mode: none
     # ports:
     #   - 11434:11434
+    environment:
+      OLLAMA_MODELS: /root/ollama_models
+    volumes:
+      - /Volumes/colima_mounts/ollama_models:/root/ollama_models

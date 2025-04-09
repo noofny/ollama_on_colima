@@ -120,6 +120,74 @@ colima stop
 colima delete
 ```
 
+## Storing Models Externally
+
+Models are large, so follow these steps if you wish to store these on an external volume or NAS location, so you don't have to download them via the container build every time.
+
+1. Copy any downloaded models from the existing running container to your desired volume/folder...
+
+```shell
+docker cp ollama_backend:/root/.ollama/models /Volumes/colima_mounts/models
+```
+
+2. Kill the running container and remove the image, it will have to be rebuilt.
+
+```shell
+docker compose down
+docker rm ollama_backend
+docker rmi ollama_on_colima-ollama_backend -f
+docker system prune
+```
+
+3. Modify the Colima default config `$HOME/.colima/default/colima.yaml` as follows...
+
+```yaml
+mounts:
+  - location: /Volumes/colima_mounts
+    writable: true
+```
+
+...and restart Colima...
+
+```shell
+colima restart
+```
+
+4. Add the bind mount in your `docker-compose.yaml` file...
+
+```yaml
+    environment:
+      OLLAMA_MODELS: /root/ollama_models
+    volumes:
+      - /Volumes/colima_mounts/ollama_models:/root/ollama_models
+```
+
+...and rebuild+start the container...
+
+```shell
+docker compose up -d
+```
+
+5. Exec to the running container and confirm the mount is working (you should see somefolders for 'blobs' & 'manifests' inside)...
+
+```shell
+docker exec -it ollama_backend /bin/bash
+...
+root@1234567890:/# ls /root/ollama_models/
+blobs  manifests
+```
+
+6. Confirm Ollama recognises the models present on the mounted path and can run them without needing to download from remote repository...
+
+```shell
+root@1234567890:/# ollama list
+NAME                            ID              SIZE      MODIFIED
+phi4:latest                     ac896e5b8b34    9.1 GB    9 days ago
+...
+root@1234567890:/# ollama run phi4:latest
+>>> Send a message (/? for help)
+```
+
 ## Benchmark
 
 ### Machine Spec
