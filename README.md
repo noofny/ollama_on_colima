@@ -127,7 +127,7 @@ Models are large, so follow these steps if you wish to store these on an externa
 1. [optional] If you already have downloaded models in an existing container instance, copy these to your desired location now before you teardown...
 
 ```shell
-docker cp ollama_backend:/root/.ollama/models /Volumes/colima_mounts
+docker cp ollama_backend:/root/.ollama/models /Volumes/macData4TB/colima_mounts
 ```
 
 2. Teardown the running container+image, it will have to be rebuilt later...
@@ -143,7 +143,7 @@ docker system prune
 
 ```yaml
 mounts:
-  - location: /Volumes/colima_mounts
+  - location: /Volumes/macData4TB/colima_mounts
     writable: true
 ```
 
@@ -159,7 +159,7 @@ colima restart
     environment:
       OLLAMA_MODELS: /root/ollama_models
     volumes:
-      - /Volumes/colima_mounts/ollama_models:/root/ollama_models
+      - /Volumes/macData4TB/colima_mounts/ollama_models:/root/ollama_models
 ```
 
 ...and rebuild+start the container...
